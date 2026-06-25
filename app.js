@@ -1176,22 +1176,17 @@ async function processUserMessage(text) {
  
 /* ---- Call Claude API -------------------------------------- */
 async function callClaudeAPI(history) {
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const response = await fetch('/.netlify/functions/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model:      'claude-haiku-4-5-20251001',
-      max_tokens: 300,
-      system:     CHATBOT.SYSTEM_PROMPT,
-      messages:   history.slice(-10), // keep last 10 turns for context
+      system:   CHATBOT.SYSTEM_PROMPT,
+      messages: history.slice(-10),
     }),
   });
- 
-  if (!response.ok) {
-    const err = await response.json().catch(() => ({}));
-    throw new Error(err?.error?.message || response.statusText);
-  }
- 
+
+  if (!response.ok) throw new Error(response.statusText);
+
   const data = await response.json();
   return data.content?.[0]?.text || "I didn't catch that — could you rephrase?";
 }
