@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Next Level Talks — Podcast, AI Tools, and Digital Growth Services by Gugulethu Mngomezulu." />
+  <meta name="theme-color" content="#080808" />
+  <title>Next Level Talks</title>
+  <link rel="icon" href="favicon.jpg" type="image/jpeg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'rich-black':   '#080808',
+            'carbon':       '#121212',
+            'surface':      '#1A1A1A',
+            'border':       '#2A2A2A',
+            'crimson':      '#C1121F',
+            'accent-red':   '#DC2626',
+            'soft-gray':    '#A1A1AA',
+            'mid-gray':     '#52525B',
+          },
+          fontFamily: {
+            sans:    ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- EmailJS — free email sending, no backend needed -->
+  <!-- Sign up at emailjs.com, then paste your Public Key below -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ← paste your EmailJS Public Key here after signing up
+    (function() {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init({ publicKey: 'CJQpVgbrjG2bIpERn' });
+      }
+    })();
+  </script>
+</head>
+
+<body class="bg-rich-black text-white font-sans antialiased">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group" aria-label="Next Level Talks Home">
+        <div class="w-8 h-8 rounded-sm bg-crimson flex items-center justify-center">
+          <span class="text-white font-display font-bold text-sm leading-none">N</span>
+        </div>
+        <span class="font-semibold text-sm tracking-wide text-white/90 group-hover:text-white transition-colors">Next Level Talks</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex items-center gap-8" role="list">
+        <li><a href="#podcast"  class="nav-link text-sm text-soft-gray hover:text-white transition-colors duration-200">Podcast</a></li>
+        <li><a href="#clipspark" class="nav-link text-sm text-soft-gray hover:text-white transition-colors duration-200">ClipSpark</a></li>
+        <li><a href="#services" class="nav-link text-sm text-soft-gray hover:text-white transition-colors duration-200">Services</a></li>
+        <li><a href="#about"   class="nav-link text-sm text-soft-gray hover:text-white transition-colors duration-200">About</a></li>
+        <li><a href="#contact" class="nav-link text-sm text-soft-gray hover:text-white transition-colors duration-200">Contact</a></li>
+      </ul>
+
+      <!-- CTA -->
+      <div class="flex items-center gap-4">
+        <a href="#contact" id="nav-email-cta" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium bg-crimson hover:bg-accent-red text-white transition-colors duration-200 group">
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Let's Work Together
+        </a>
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-toggle" class="md:hidden p-2 text-soft-gray hover:text-white" aria-label="Toggle menu" aria-expanded="false">
+          <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-carbon/95 backdrop-blur-md border-t border-border">
+      <ul class="px-6 py-6 flex flex-col gap-5" role="list">
+        <li><a href="#podcast"   class="text-soft-gray hover:text-white transition-colors text-sm" onclick="closeMobileMenu()">Podcast</a></li>
+        <li><a href="#clipspark" class="text-soft-gray hover:text-white transition-colors text-sm" onclick="closeMobileMenu()">ClipSpark</a></li>
+        <li><a href="#services"  class="text-soft-gray hover:text-white transition-colors text-sm" onclick="closeMobileMenu()">Services</a></li>
+        <li><a href="#about"     class="text-soft-gray hover:text-white transition-colors text-sm" onclick="closeMobileMenu()">About</a></li>
+        <li><a href="#contact"   class="text-soft-gray hover:text-white transition-colors text-sm" onclick="closeMobileMenu()">Contact</a></li>
+        <li><a href="#contact" id="mobile-email-cta" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded text-sm font-medium bg-crimson hover:bg-accent-red text-white transition-colors" onclick="closeMobileMenu()"><svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Let's Work Together</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16">
+
+    <!-- Ambient background lettermark -->
+    <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+      <span class="text-[28vw] font-display font-bold text-white/[0.02] leading-none tracking-tight">NLT</span>
+    </div>
+
+    <!-- Subtle red orb -->
+    <div aria-hidden="true" class="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-crimson/5 blur-3xl pointer-events-none"></div>
+    <div aria-hidden="true" class="absolute bottom-1/4 left-1/6 w-64 h-64 rounded-full bg-crimson/4 blur-3xl pointer-events-none"></div>
+
+    <!-- Red rule line -->
+    <div aria-hidden="true" class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-crimson/30 to-transparent hidden lg:block" style="left: 4rem;"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-4xl reveal-up">
+        <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-6">Media · Technology · Entrepreneurship</p>
+
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold leading-[1.05] tracking-tight mb-8">
+          Ideas.<br />
+          <span class="text-white/60">Technology.</span><br />
+          Growth.
+        </h1>
+
+        <p class="text-soft-gray text-lg lg:text-xl leading-relaxed max-w-xl mb-12">
+          Next Level Talks explores technology, AI, entrepreneurship and the people building the future.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#podcast" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded bg-white text-rich-black text-sm font-semibold hover:bg-white/90 transition-colors duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Podcast
+          </a>
+          <a href="#clipspark" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded border border-border text-white text-sm font-medium hover:border-crimson/50 hover:bg-crimson/5 transition-all duration-200">
+            Explore ClipSpark
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="mt-20 lg:mt-28 pt-8 border-t border-border grid grid-cols-3 gap-8 max-w-lg reveal-up" style="--delay: 0.2s">
+        <div>
+          <p class="text-2xl lg:text-3xl font-display font-bold text-white" id="stat-episodes">—</p>
+          <p class="text-xs text-soft-gray mt-1 tracking-wide uppercase">Episodes</p>
+        </div>
+        <div>
+          <p class="text-2xl lg:text-3xl font-display font-bold text-white" id="stat-views">—</p>
+          <p class="text-xs text-soft-gray mt-1 tracking-wide uppercase">Views</p>
+        </div>
+        <div>
+          <p class="text-2xl lg:text-3xl font-display font-bold text-white" id="stat-subs">—</p>
+          <p class="text-xs text-soft-gray mt-1 tracking-wide uppercase">Subscribers</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+      <div class="w-px h-12 bg-gradient-to-b from-white/40 to-transparent animate-pulse"></div>
+    </div>
+  </section>
+
+
+  <!-- ===================== PODCAST ===================== -->
+  <section id="podcast" class="py-24 lg:py-32 bg-carbon">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="flex items-end justify-between mb-16 reveal-up">
+        <div>
+          <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-3">The Show</p>
+          <h2 class="font-display text-4xl lg:text-5xl font-bold">Featured Episodes</h2>
+        </div>
+        <a href="#spotify" class="hidden sm:inline-flex items-center gap-2 text-sm text-soft-gray hover:text-white transition-colors">
+          All episodes
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Episode Grid -->
+      <div id="episodes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 reveal-up" style="--delay: 0.1s">
+        <!-- Populated by app.js -->
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== SPOTIFY ===================== -->
+  <section id="spotify" class="py-20 bg-rich-black border-y border-border">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-8 reveal-up">
+        <div class="flex items-center gap-5">
+          <!-- Spotify icon -->
+          <div class="w-14 h-14 rounded-full flex items-center justify-center bg-[#1DB954]/10 border border-[#1DB954]/20 flex-shrink-0">
+            <svg class="w-7 h-7 text-[#1DB954]" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Next Level Talks Podcast</p>
+            <p class="text-soft-gray text-sm mt-0.5">Also available on Spotify</p>
+          </div>
+        </div>
+        <a id="spotify-link" href="SPOTIFY_PROFILE_URL" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded bg-[#1DB954] hover:bg-[#1ed760] text-rich-black text-sm font-semibold transition-colors duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Listen on Spotify
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CLIPSPARK ===================== -->
+  <section id="clipspark" class="py-24 lg:py-36 bg-rich-black overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Header -->
+      <div class="max-w-3xl mb-20 reveal-up">
+        <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-3">Flagship Product</p>
+        <h2 class="font-display text-4xl lg:text-5xl font-bold mb-5">
+          ClipSpark <span class="text-crimson">AI</span>
+        </h2>
+        <p class="text-xl text-white/80 font-medium mb-4">Generate Viral TikTok Scripts In Under 30 Seconds</p>
+        <p class="text-soft-gray leading-relaxed max-w-2xl">
+          ClipSpark AI is built specifically for TikTok creators. Enter your content idea and ClipSpark generates everything you need to record and publish engaging short-form content.
+        </p>
+
+        <!-- What you get chips -->
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-crimson/10 border border-crimson/20 text-crimson">Viral Hooks</span>
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-crimson/10 border border-crimson/20 text-crimson">Voiceover Scripts</span>
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-crimson/10 border border-crimson/20 text-crimson">TikTok Captions</span>
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-crimson/10 border border-crimson/20 text-crimson">Hashtag Sets</span>
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-crimson/10 border border-crimson/20 text-crimson">Content Ideas</span>
+        </div>
+      </div>
+
+      <!-- ── PRODUCT SHOWCASE ── -->
+      <div class="grid lg:grid-cols-[1.2fr_1fr] gap-12 xl:gap-20 items-start reveal-up" style="--delay: 0.1s">
+
+        <!-- Left: Large product screenshot -->
+        <div class="relative group">
+          <!-- Glow rings -->
+          <div aria-hidden="true" class="absolute -inset-4 rounded-2xl bg-crimson/5 blur-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+          <div class="relative rounded-2xl overflow-hidden border border-border bg-surface shadow-2xl">
+            <!-- Browser chrome bar -->
+            <div class="bg-carbon border-b border-border px-4 h-11 flex items-center gap-2">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#28C840]"></div>
+              </div>
+              <div class="flex-1 mx-3 h-6 rounded-md bg-rich-black/60 flex items-center px-3 gap-2">
+                <div class="w-3 h-3 rounded-full border border-mid-gray/40 flex-shrink-0"></div>
+                <span class="text-mid-gray text-[11px] truncate">clipspark.co.za</span>
+              </div>
+            </div>
+
+            <!-- ClipSpark product screenshot -->
+            <div id="clipspark-screenshot" class="relative aspect-[16/10] bg-carbon overflow-hidden">
+              <img
+                src="clipspark.png"
+                alt="ClipSpark AI dashboard — TikTok script generator"
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Floating glass stat cards -->
+          <div aria-hidden="true" class="absolute -bottom-5 -left-5 px-4 py-3 rounded-xl bg-carbon/80 backdrop-blur-md border border-border shadow-xl hidden lg:flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-crimson/15 flex items-center justify-center text-crimson text-sm">⚡</div>
+            <div>
+              <p class="text-white text-xs font-semibold">Under 30 seconds</p>
+              <p class="text-mid-gray text-[10px]">per script generated</p>
+            </div>
+          </div>
+
+          <div aria-hidden="true" class="absolute -top-5 -right-5 px-4 py-3 rounded-xl bg-carbon/80 backdrop-blur-md border border-border shadow-xl hidden lg:flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-green-500/15 flex items-center justify-center text-green-400 text-sm">✓</div>
+            <div>
+              <p class="text-white text-xs font-semibold">Free to start</p>
+              <p class="text-mid-gray text-[10px]">No credit card required</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Features + Pricing card -->
+        <div class="flex flex-col gap-8">
+
+          <!-- Feature list -->
+          <div id="clipspark-features" class="flex flex-col gap-1"></div>
+
+          <!-- Pricing card -->
+          <div class="rounded-xl border border-crimson/30 bg-surface p-6 relative overflow-hidden">
+            <!-- Background glow -->
+            <div aria-hidden="true" class="absolute top-0 right-0 w-32 h-32 bg-crimson/8 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="relative">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <p class="text-xs font-semibold tracking-[0.15em] uppercase text-crimson mb-1">Pro Plan</p>
+                  <p class="font-display text-3xl font-bold text-white">R199<span class="text-base font-normal text-soft-gray">/mo</span></p>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-crimson text-white">Most Popular</span>
+              </div>
+
+              <p class="text-soft-gray text-sm mb-5 leading-relaxed">
+                For creators who publish consistently and need high-quality content fast.
+              </p>
+
+              <ul class="space-y-2.5 mb-6">
+                <li class="flex items-center gap-2.5 text-sm text-soft-gray">
+                  <svg class="w-4 h-4 text-crimson flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  100 AI Script Generations monthly
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-soft-gray">
+                  <svg class="w-4 h-4 text-crimson flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Script History &amp; Saved Library
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-soft-gray">
+                  <svg class="w-4 h-4 text-crimson flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Content Calendar
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-soft-gray">
+                  <svg class="w-4 h-4 text-crimson flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Premium Templates
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-soft-gray">
+                  <svg class="w-4 h-4 text-crimson flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Priority Access to New Features
+                </li>
+              </ul>
+
+              <a id="clipspark-link" href="CLIPSPARK_URL" target="_blank" rel="noopener noreferrer"
+                 class="block w-full text-center py-3.5 rounded bg-crimson hover:bg-accent-red text-white text-sm font-semibold transition-colors">
+                Start Creating
+              </a>
+
+              <p class="text-center text-xs text-mid-gray mt-3">5 free scripts — no card needed to try</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<!-- ===================== SERVICES ===================== -->
+  <section id="services" class="py-24 lg:py-36 bg-carbon">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="max-w-xl mb-16 reveal-up">
+        <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-3">Work With Me</p>
+        <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Digital Growth Services</h2>
+        <p class="text-soft-gray leading-relaxed">Helping businesses build visibility, credibility and automation.</p>
+      </div>
+
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-up" style="--delay: 0.1s">
+        <!-- Populated by app.js -->
+      </div>
+
+      <!-- CTA below cards -->
+      <div class="mt-12 text-center reveal-up" style="--delay: 0.2s">
+        <p class="text-soft-gray text-sm mb-4">Ready to grow your digital presence?</p>
+        <a href="#contact" id="services-email-cta"
+           class="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-crimson hover:bg-accent-red text-white text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-crimson/20 hover:-translate-y-0.5 group">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Email Me Let's Build Something
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="py-24 lg:py-36 bg-carbon">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+        <!-- Photo -->
+        <div class="reveal-up order-2 lg:order-1">
+          <div class="flex items-center justify-center lg:justify-start">
+            <div class="relative w-64 h-64 lg:w-80 lg:h-80">
+              <!-- Crimson glow ring -->
+              <div class="absolute inset-0 rounded-full bg-crimson/10 blur-2xl scale-110 pointer-events-none"></div>
+              <!-- Crimson border ring -->
+              <div class="absolute inset-0 rounded-full border-2 border-crimson/40"></div>
+              <!-- Photo -->
+              <img
+                src="pic.jpg"
+                alt="Gugulethu Mngomezulu"
+                class="w-full h-full rounded-full object-cover object-top ring-4 ring-surface"
+              />
+              <!-- Red accent line left -->
+              <div class="absolute left-0 top-1/2 -translate-x-8 -translate-y-1/2 w-6 h-px bg-crimson hidden lg:block"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="reveal-up order-1 lg:order-2" style="--delay: 0.1s">
+          <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-3">The Builder</p>
+          <h2 class="font-display text-4xl lg:text-5xl font-bold mb-6">Meet Gugulethu<br/>Mngomezulu</h2>
+
+          <!-- Highlight badges -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-3 py-1 rounded-full text-xs font-medium bg-surface border border-border text-soft-gray">Podcast Host</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium bg-surface border border-border text-soft-gray">AI Engineer</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium bg-surface border border-border text-soft-gray">Website Developer</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium bg-surface border border-border text-soft-gray">Digital Entrepreneur</span>
+          </div>
+
+          <div class="space-y-4 text-soft-gray leading-relaxed text-sm lg:text-base">
+            <p>I'm the founder of Next Level Talks a podcast focused on technology, AI, entrepreneurship, and career growth.</p>
+            <p>Beyond the podcast, I build digital products and help businesses establish their online presence through websites, automation, and AI-powered solutions.</p>
+            <p>Most recently, I launched <span class="text-white font-medium">ClipSpark AI</span> a micro SaaS platform designed for content creators who want to generate viral TikTok scripts in seconds using artificial intelligence.</p>
+            <p class="text-white/70 italic border-l-2 border-crimson pl-4">
+              My mission is simple: build useful technology, share knowledge, and help people leverage AI to create opportunities for themselves and their businesses.
+            </p>
+          </div>
+
+          <!-- Founder highlights -->
+          <div class="mt-8 grid grid-cols-1 gap-3">
+            <div class="flex items-center gap-3 text-sm text-soft-gray">
+              <div class="w-1.5 h-1.5 rounded-full bg-crimson flex-shrink-0"></div>
+              Founder of Next Level Talks Podcast
+            </div>
+            <div class="flex items-center gap-3 text-sm text-soft-gray">
+              <div class="w-1.5 h-1.5 rounded-full bg-crimson flex-shrink-0"></div>
+              Creator of ClipSpark AI
+            </div>
+            <div class="flex items-center gap-3 text-sm text-soft-gray">
+              <div class="w-1.5 h-1.5 rounded-full bg-crimson flex-shrink-0"></div>
+              Website Developer &amp; AI Engineer
+            </div>
+            <div class="flex items-center gap-3 text-sm text-soft-gray">
+              <div class="w-1.5 h-1.5 rounded-full bg-crimson flex-shrink-0"></div>
+              Digital Entrepreneur based in KwaZulu-Natal, South Africa
+            </div>
+          </div>
+
+          <div class="mt-8 flex gap-4">
+            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded bg-crimson hover:bg-accent-red text-white text-sm font-semibold transition-colors">
+              Get in Touch
+            </a>
+            <a href="#podcast" class="inline-flex items-center gap-2 px-5 py-3 rounded border border-border text-white text-sm font-medium hover:border-white/30 transition-colors">
+              Watch the Show
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- ===================== SOCIAL PROOF ===================== -->
+  <section id="social-proof" class="py-24 bg-carbon border-y border-border">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-6 mb-20 reveal-up">
+        <div class="text-center">
+          <p class="font-display text-4xl lg:text-5xl font-bold text-white" id="stat-ep-2">—</p>
+          <p class="text-xs text-soft-gray mt-2 tracking-wide uppercase">Episodes</p>
+        </div>
+        <div class="text-center">
+          <p class="font-display text-4xl lg:text-5xl font-bold text-white" id="stat-views-2">—</p>
+          <p class="text-xs text-soft-gray mt-2 tracking-wide uppercase">Views</p>
+        </div>
+        <div class="text-center">
+          <p class="font-display text-4xl lg:text-5xl font-bold text-white" id="stat-subs-2">—</p>
+          <p class="text-xs text-soft-gray mt-2 tracking-wide uppercase">Subscribers</p>
+        </div>
+      </div>
+
+      <!-- Testimonials header + arrows -->
+      <div class="flex items-end justify-between mb-8 reveal-up" style="--delay: 0.1s">
+        <div>
+          <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-3">What People Say</p>
+          <h3 class="font-display text-3xl lg:text-4xl font-bold">Client Testimonials</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="t-prev" aria-label="Previous testimonial"
+                  class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-soft-gray hover:border-crimson/50 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button id="t-next" aria-label="Next testimonial"
+                  class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-soft-gray hover:border-crimson/50 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slider track wrapper -->
+      <div class="relative overflow-hidden reveal-up" style="--delay: 0.15s">
+        <div id="testimonials-track" class="flex gap-6 transition-transform duration-500 ease-out">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Dot indicators -->
+      <div id="t-dots" class="flex justify-center gap-2 mt-6"></div>
+
+      <!-- Submit a testimonial -->
+      <div class="mt-16 reveal-up" style="--delay: 0.2s">
+        <div class="max-w-xl mx-auto bg-surface border border-border rounded-xl p-8">
+          <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-2">Share Your Experience</p>
+          <h4 class="font-display text-2xl font-bold mb-6">Leave a Testimonial</h4>
+
+          <form id="testimonial-form" class="space-y-4" onsubmit="handleTestimonialSubmit(event)">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="tf-name" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Name *</label>
+                <input type="text" id="tf-name" required placeholder="Your name"
+                       class="w-full px-4 py-3 rounded bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+              </div>
+              <div>
+                <label for="tf-role" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Role / Business</label>
+                <input type="text" id="tf-role" placeholder="e.g. Business Owner"
+                       class="w-full px-4 py-3 rounded bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="tf-message" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Your Experience *</label>
+              <textarea id="tf-message" required rows="4" placeholder="What did you enjoy or find valuable?"
+                        class="w-full px-4 py-3 rounded bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors resize-none"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs text-soft-gray mb-2 tracking-wide">Rating</label>
+              <div id="star-picker" class="flex gap-1" role="radiogroup" aria-label="Star rating">
+                <button type="button" data-star="1" class="star-btn text-2xl text-mid-gray hover:text-yellow-400 transition-colors focus:outline-none" aria-label="1 star" aria-pressed="false">&#9733;</button>
+                <button type="button" data-star="2" class="star-btn text-2xl text-mid-gray hover:text-yellow-400 transition-colors focus:outline-none" aria-label="2 stars" aria-pressed="false">&#9733;</button>
+                <button type="button" data-star="3" class="star-btn text-2xl text-mid-gray hover:text-yellow-400 transition-colors focus:outline-none" aria-label="3 stars" aria-pressed="false">&#9733;</button>
+                <button type="button" data-star="4" class="star-btn text-2xl text-mid-gray hover:text-yellow-400 transition-colors focus:outline-none" aria-label="4 stars" aria-pressed="false">&#9733;</button>
+                <button type="button" data-star="5" class="star-btn text-2xl text-mid-gray hover:text-yellow-400 transition-colors focus:outline-none" aria-label="5 stars" aria-pressed="false">&#9733;</button>
+              </div>
+              <input type="hidden" id="tf-rating" value="5" />
+            </div>
+            <button type="submit"
+                    class="w-full py-3.5 rounded bg-crimson hover:bg-accent-red text-white text-sm font-semibold transition-colors">
+              Submit Testimonial
+            </button>
+            <p id="tf-feedback" class="text-sm text-center hidden"></p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section id="newsletter" class="py-24 bg-rich-black">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center reveal-up">
+        <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-3">Stay Updated</p>
+        <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Stay Ahead</h2>
+        <p class="text-soft-gray leading-relaxed mb-10">
+          Podcast releases, AI insights, and business growth content delivered straight to your inbox.
+        </p>
+
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="handleNewsletterSubmit(event)">
+          <input type="text" id="nl-name" placeholder="Your name" required
+                 class="flex-1 px-4 py-3 rounded bg-surface border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+          <input type="email" id="nl-email" placeholder="Email address" required
+                 class="flex-1 px-4 py-3 rounded bg-surface border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+          <button type="submit"
+                  class="px-6 py-3 rounded bg-crimson hover:bg-accent-red text-white text-sm font-semibold transition-colors whitespace-nowrap">
+            Subscribe
+          </button>
+        </form>
+        <p id="nl-feedback" class="text-sm mt-4 text-soft-gray hidden"></p>
+        <p class="text-xs text-mid-gray mt-4">No spam. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="py-24 lg:py-36 bg-carbon">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left -->
+        <div class="reveal-up">
+          <p class="text-crimson text-xs font-semibold tracking-[0.2em] uppercase mb-3">Let's Talk</p>
+          <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Get in Touch</h2>
+          <p class="text-soft-gray leading-relaxed mb-10 max-w-md">
+            Interested in working together, partnering on content, or learning more about ClipSpark? Send a message and I'll get back to you within 24 hours.
+          </p>
+
+          <!-- Contact info cards -->
+          <div class="flex flex-col gap-4">
+
+            <!-- Email -->
+            <a id="contact-email-link" href="mailto:nonthandogugulethu@gmail.com"
+               class="group flex items-center gap-4 p-4 rounded-xl border border-border bg-surface hover:border-crimson/40 hover:bg-surface/80 transition-all duration-200">
+              <div class="w-11 h-11 rounded-lg bg-crimson/10 border border-crimson/20 flex items-center justify-center flex-shrink-0 group-hover:bg-crimson/15 transition-colors">
+                <svg class="w-5 h-5 text-crimson" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-soft-gray mb-0.5 tracking-wide uppercase">Email</p>
+                <p id="contact-email-display" class="text-white text-sm font-medium group-hover:text-crimson transition-colors">nonthandogugulethu@gmail.com</p>
+              </div>
+              <svg class="w-4 h-4 text-mid-gray ml-auto group-hover:text-crimson transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+
+            <!-- Response time -->
+            <div class="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
+              <div class="w-11 h-11 rounded-lg bg-surface border border-border flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-soft-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-soft-gray mb-0.5 tracking-wide uppercase">Response Time</p>
+                <p class="text-white text-sm font-medium">Within 24 hours</p>
+              </div>
+            </div>
+
+            <!-- Based in -->
+            <div class="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
+              <div class="w-11 h-11 rounded-lg bg-surface border border-border flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-soft-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-soft-gray mb-0.5 tracking-wide uppercase">Based In</p>
+                <p class="text-white text-sm font-medium">KwaZulu-Natal, South Africa</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal-up" style="--delay: 0.15s">
+          <div class="bg-surface border border-border rounded-2xl p-6 lg:p-8">
+            <h3 class="font-semibold text-white text-base mb-6">Send a Message</h3>
+            <form id="contact-form" class="space-y-4" onsubmit="handleContactSubmit(event)">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="cf-name" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Name *</label>
+                  <input type="text" id="cf-name" required placeholder="Your name"
+                         class="w-full px-4 py-3 rounded-lg bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+                </div>
+                <div>
+                  <label for="cf-email" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Email *</label>
+                  <input type="email" id="cf-email" required placeholder="you@example.com"
+                         class="w-full px-4 py-3 rounded-lg bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="cf-business" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Business Name</label>
+                  <input type="text" id="cf-business" placeholder="Your business"
+                         class="w-full px-4 py-3 rounded-lg bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+                </div>
+                <div>
+                  <label for="cf-phone" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Phone</label>
+                  <input type="tel" id="cf-phone" placeholder="+27 ..."
+                         class="w-full px-4 py-3 rounded-lg bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors" />
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div>
+                <label for="cf-subject" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Subject</label>
+                <select id="cf-subject"
+                        class="w-full px-4 py-3 rounded-lg bg-rich-black border border-border text-white text-sm focus:outline-none focus:border-crimson/50 transition-colors appearance-none cursor-pointer">
+                  <option value="">Select a topic...</option>
+                  <option value="Website Services">Website Services</option>
+                  <option value="ClipSpark AI">ClipSpark AI</option>
+                  <option value="Podcast Collaboration">Podcast Collaboration</option>
+                  <option value="AI Solutions">AI Solutions</option>
+                  <option value="General Enquiry">General Enquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="cf-message" class="block text-xs text-soft-gray mb-1.5 tracking-wide">Message *</label>
+                <textarea id="cf-message" required rows="5" placeholder="Tell me what you need..."
+                          class="w-full px-4 py-3 rounded-lg bg-rich-black border border-border text-white text-sm placeholder-mid-gray focus:outline-none focus:border-crimson/50 transition-colors resize-none"></textarea>
+              </div>
+
+              <button type="submit" id="cf-submit"
+                      class="w-full py-3.5 rounded-lg bg-crimson hover:bg-accent-red text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                Send Message
+              </button>
+
+              <p id="cf-feedback" class="text-sm hidden text-center py-2 px-4 rounded-lg"></p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-rich-black border-t border-border">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+
+        <!-- Brand -->
+        <div>
+          <a href="#" class="flex items-center gap-2 mb-3">
+            <div class="w-7 h-7 rounded-sm bg-crimson flex items-center justify-center">
+              <span class="text-white font-display font-bold text-xs">N</span>
+            </div>
+            <span class="font-semibold text-sm text-white/90">Next Level Talks</span>
+          </a>
+          <p class="text-xs text-mid-gray max-w-xs">Media · Technology · Entrepreneurship</p>
+        </div>
+
+        <!-- Social links -->
+        <nav aria-label="Social links">
+          <ul class="flex flex-wrap gap-5" role="list">
+            <li>
+              <a id="footer-youtube" href="YOUTUBE_CHANNEL_URL" target="_blank" rel="noopener noreferrer"
+                 class="text-mid-gray hover:text-white transition-colors text-sm">YouTube</a>
+            </li>
+            <li>
+              <a id="footer-spotify" href="SPOTIFY_PROFILE_URL" target="_blank" rel="noopener noreferrer"
+                 class="text-mid-gray hover:text-white transition-colors text-sm">Spotify</a>
+            </li>
+            <li>
+              <a id="footer-linkedin" href="LINKEDIN_URL" target="_blank" rel="noopener noreferrer"
+                 class="text-mid-gray hover:text-white transition-colors text-sm">LinkedIn</a>
+            </li>
+            <li>
+              <a id="footer-facebook" href="FACEBOOK_URL" target="_blank" rel="noopener noreferrer"
+                 class="text-mid-gray hover:text-white transition-colors text-sm">Facebook</a>
+            </li>
+            <li>
+              <a id="footer-clipspark" href="CLIPSPARK_URL" target="_blank" rel="noopener noreferrer"
+                 class="text-crimson hover:text-accent-red transition-colors text-sm font-medium">ClipSpark</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-mid-gray">&copy; <span id="footer-year"></span> Next Level Talks. All rights reserved.</p>
+        <p class="text-xs text-mid-gray">Built by Gugulethu Mngomezulu</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== AI CHATBOT ===================== -->
+
+  <!-- Chat toggle button -->
+  <button id="chat-toggle" aria-label="Open chat assistant"
+          class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-crimson hover:bg-accent-red shadow-xl shadow-crimson/30 flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+    <svg id="chat-icon-open" class="w-6 h-6 text-white transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+    </svg>
+    <svg id="chat-icon-close" class="w-6 h-6 text-white hidden transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+    <!-- Pulse ring -->
+    <span class="absolute inset-0 rounded-full bg-crimson animate-ping opacity-20 pointer-events-none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="chat-window"
+       class="fixed bottom-24 right-6 z-50 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-border bg-carbon shadow-2xl shadow-black/60 flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right"
+       style="max-height: 520px; transform: scale(0.95) translateY(8px); opacity: 0; pointer-events: none;">
+
+    <!-- Header -->
+    <div class="flex items-center gap-3 px-4 py-3.5 bg-surface border-b border-border flex-shrink-0">
+      <div class="relative">
+        <div class="w-9 h-9 rounded-full bg-crimson/15 border border-crimson/30 flex items-center justify-center">
+          <svg class="w-4 h-4 text-crimson" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-surface"></span>
+      </div>
+      <div>
+        <p class="text-white text-sm font-semibold leading-tight">NLT Assistant</p>
+        <p class="text-green-400 text-[10px]">Online · Powered by AI</p>
+      </div>
+      <button onclick="toggleChat()" class="ml-auto text-mid-gray hover:text-white transition-colors p-1" aria-label="Close chat">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div id="chat-messages" class="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 scroll-smooth" style="min-height: 280px;"></div>
+
+    <!-- Typing indicator -->
+    <div id="chat-typing" class="hidden px-4 pb-1">
+      <div class="inline-flex items-center gap-1.5 px-3 py-2 rounded-2xl rounded-bl-sm bg-surface border border-border">
+        <span class="w-1.5 h-1.5 rounded-full bg-soft-gray animate-bounce" style="animation-delay:0ms"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-soft-gray animate-bounce" style="animation-delay:150ms"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-soft-gray animate-bounce" style="animation-delay:300ms"></span>
+      </div>
+    </div>
+
+    <!-- Quick replies -->
+    <div id="chat-quick-replies" class="flex flex-wrap gap-1.5 px-4 pb-2"></div>
+
+    <!-- Input -->
+    <div class="px-3 pb-3 pt-2 border-t border-border flex-shrink-0">
+      <div class="flex items-end gap-2 bg-surface rounded-xl border border-border px-3 py-2 focus-within:border-crimson/40 transition-colors">
+        <textarea id="chat-input" rows="1" placeholder="Ask me anything..."
+                  class="flex-1 bg-transparent text-white text-sm placeholder-mid-gray resize-none focus:outline-none leading-5 max-h-24 overflow-y-auto"
+                  onkeydown="handleChatKey(event)" oninput="autoresizeChatInput(this)"></textarea>
+        <button onclick="sendChatMessage()" aria-label="Send message"
+                class="w-7 h-7 rounded-lg bg-crimson hover:bg-accent-red flex items-center justify-center flex-shrink-0 transition-colors mb-0.5">
+          <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
+        </button>
+      </div>
+      <p class="text-[10px] text-mid-gray text-center mt-1.5">AI assistant · Next Level Talks</p>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
